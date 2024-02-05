@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Billete de Avión</title>
+
+    <style>
+
+        @font-face {
+            font-family: Blogger-Sans;
+            src: url(../Blogger_Sans.otf);
+        }
+
+        body {
+            --Tam: min(1vw, 1.5vh);
+
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            margin: 0px;
+            background: rgb(129, 213, 255);
+        }
+
+        button {
+            position: fixed;
+            left: calc( 50% - var(--Tam) * 10 / 2 );
+            top: calc( 50vh + var(--Tam) * 54 / 2 + var(--Tam) * 2.5 );
+            width: calc( var(--Tam) * 10 );
+            height: calc( var(--Tam) * 10 );
+            padding: 0px;
+            border: none;
+            border-radius: var(--Tam);
+            background: white;
+            font-size: calc( var(--Tam) * 5 );
+        }
+
+        button img {
+            width: 75%;
+            margin-top: 12.5%;
+        }
+
+        @media (orientation: landscape) {
+
+            button {
+                top: calc( 50vh - var(--Tam) * 10 / 2 );
+                left: calc( 50% + var(--Tam) * 86 / 2 + var(--Tam) * 2.5);
+            }
+            
+        }
+
+        div.Billete {
+            width: calc( var(--Tam) * 86 );
+            height: calc( var(--Tam) * 54 );
+            background: white;
+            border-radius: calc( var(--Tam) * 2.5 );
+            position: fixed;
+            top: calc( 50vh - var(--Tam) * 54 / 2 );
+            left: calc( 50% - var(--Tam) * 86 / 2 );
+            overflow: hidden;
+        }
+
+        div.Cabecera {
+            --c11: #59c1ff;
+            --c12: #a8dfff;
+            --c21: #6db8ff;
+            --c22: #4ba8ff;
+
+            width: 100%;
+            height: 20%;
+        }
+
+        @keyframes Cabecera {
+
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: -1.2%;
+            }
+            
+        }
+
+        div.Cabecera > p {
+            font-family: Blogger-Sans;
+            position: absolute;
+            z-index: 1;
+            top: 5%;
+            height: 10%;
+            width: 100%;
+            color: white;
+            font-size: calc( var(--Tam) * 5 );
+            margin: 0px;
+            white-space: break-spaces;
+        }
+
+        div.Cabecera::after {
+            content: "";
+            background: repeating-linear-gradient(45deg,
+                var(--c11) calc( var(--Tam) * 0 ),
+                var(--c12)  calc( var(--Tam) * 10 ),
+                var(--c21)  calc( var(--Tam) * 10 ),
+                var(--c22)  calc( var(--Tam) * 20 ));
+            width: 200%;
+            height: 20%;
+            position: absolute;
+            left: 0%;
+            animation: Cabecera 10s linear infinite forwards;
+        }
+
+        div.Contenido {
+            position: absolute;
+            top: 20%;
+            width: 100%;
+            height: 80%;
+            overflow: hidden;
+        }
+
+        div.Contenido > img[src="../Amistad.jpg"] {
+            position: absolute;
+            opacity: 0.5;
+            width: 67%;
+            top: -5%;
+            z-index: -1;
+        }
+
+        div.Contenido > p {
+            margin: 0px;
+            position: absolute;
+            color: black;
+            font-family: Blogger-Sans;
+            font-size: calc(3 * var(--Tam));
+        }
+
+        div.Contenido > img[src="QR.png"] {
+            position: absolute;
+            width: 35%;
+            right: 3%;
+            top: 6%;
+        }
+
+        div.Contenido > img[src="Codigo.png"] {
+            position: absolute;
+            width: 90%;
+            right: 5%;
+            top: 75%;
+            height: 20%;
+            object-fit: contain;
+        }
+
+        div.Billete.Trasero div.Cabecera {
+            height: 100%;
+        }
+
+        div.Billete.Trasero div.Cabecera::after {
+            height: 100%;
+        }
+
+        div.Billete.Trasero p {
+            color: white;
+            font-family: Blogger-Sans;
+            font-size: calc( var(--Tam) * 7 );
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: calc( 50% - var(--Tam) * 3.5 );
+            height: calc( var(--Tam) * 7 );
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="Billete Delantero" style="transform: rotateY(0deg);">
+        <div class="Cabecera">
+            <p style="text-align: left;">  Carnet de Amistad</p>
+        </div>
+        <div class="Contenido">
+            <p style="text-align: right;position: absolute;top: var(--Tam);left: calc( 2 * var(--Tam) );"><b>Nombre:</b> Carlos Jiménez Gómez</p>
+            <p style="text-align: right;position: absolute;top: calc( 6 * var(--Tam) );left: calc( 2 * var(--Tam) );"><b>Nacimiento:</b> 05/02/2006</p>
+            <p style="text-align: right;position: absolute;top: calc( 6 * var(--Tam) );left: calc( 32.5 * var(--Tam) );"><b>Sexo:</b> H</p>
+            <p style="text-align: right;position: absolute;top: calc( 11 * var(--Tam) );left: calc( 2 * var(--Tam) );"><b>CD:</b> Altura y fuerza descomunal</p>
+            <!-- CD es la abreviatura de Cualidad destacable y están registrados los posibles valores:
+                1.- Altura descomunal
+                2.- Fuerza descomunal -->
+            <p style="text-align: right;position: absolute;top: calc( 16 * var(--Tam) );left: calc( 2 * var(--Tam) );"><b>Emisión:</b> 14/02/2024</p>
+            <p style="text-align: right;position: absolute;top: calc( 16 * var(--Tam) );left: calc( 28 * var(--Tam) );"><b>Nacionalidad:</b> ESP</p>
+            <p style="text-align: right;position: absolute;top: calc( 21 * var(--Tam) );left: calc( 2 * var(--Tam) );"><b>Caducidad:</b> 14/02/2124</p>
+            <!-- La fecha de caducidad tiene que ser 100 años después de la fecha de emisión -->
+            <p style="text-align: right;position: absolute;top: calc( 21 * var(--Tam) );left: calc( 31 * var(--Tam) );"><b>DPA:</b> #013159R</p>
+            <!-- El Documento Privado de Amistad es como el DNI, las dos primeras cifras son el nº de Carnet hecho, en este caso el
+                1 (Carlos Jiménez Gómez), otra siendo (Sexo como 3 para hombres o 7 para mujeres) * (nº de Carnet hecho) mod 10,
+                en este caso (1 * 3) mod 10 = 3, otras dos cifras con la suma de los dígitos de la fecha de nacimiento (5+2+2+0+0+6) = 15,
+                tras esto hay dos cifras más para la CD, que se calcula con la suma de los índices de las CDs multiplicados por la 3ª
+                cifra del DPA (la del sexo) módulo 10, en este caso (1+2) * 3 mod 10 = 9; por último se suman todas las cifras módulo 27 y
+                se pone la letra final, siendo la A el 1, la B el 2 ... la Y el 26, y la Z el 0 (puesto que 27 mod 27 = 0), en este caso
+                (0+1+3+1+5+9) mod 27 = 19; la R es la 19 -->
+            <img src="QR.png" alt="">
+            <!-- El QR es creado a través de https://www.codigos-qr.com/generador-de-codigos-qr/ -->
+            <img src="../Amistad.jpg" alt="">
+            <img src="Codigo.png" alt="">
+        </div>
+    </div>
+
+    <button>
+        <img src="../Vuelta.png" alt="">
+    </button>
+
+    <div class="Billete Trasero" style="transform: rotateY(270deg);">
+        <div class="Cabecera">
+            <p>Carnet de Amistad</p>
+        </div>
+    </div>
+
+    <script>
+
+        let button = document.querySelector("button");
+        let BilleteDelantero = document.querySelector("div.Billete.Delantero");
+        let BilleteTrasero = document.querySelector("div.Billete.Trasero");
+        let delay = 1, MostrandoDelantero = true;
+
+        button.onclick = () => {
+            if ( MostrandoDelantero ) {
+                MostrandoDelantero = false;
+                BilleteDelantero.style = "transform: rotateY(90deg);transition: all " + delay/2 + "s ease-in;";
+                setTimeout(() => BilleteTrasero.style = "transform: rotateY(360deg);transition: all " + delay/2 + "s ease-out;", 500);
+            } else {
+                MostrandoDelantero = true;
+                BilleteTrasero.style = "transform: rotateY(270deg);transition: all " + delay/2 + "s ease-out;";
+                setTimeout(() => BilleteDelantero.style = "transform: rotateY(0deg);transition: all " + delay/2 + "s ease-in;", 500);
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
